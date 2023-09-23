@@ -3,8 +3,7 @@ package org.bukkit.entity;
 import java.util.Set;
 
 /**
- * Represents a complex living entity - one that is made up of various smaller
- * parts
+ * Represents a complex living entity - one that is made up of various smaller parts
  */
 public interface ComplexLivingEntity extends LivingEntity {
     /**

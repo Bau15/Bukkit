@@ -13,7 +13,7 @@ import com.avaje.ebean.EbeanServer;
 
 /**
  * Represents a Plugin
- * <p>
+ * <p />
  * The use of {@link PluginBase} is recommended for actual Implementation
  */
 public interface Plugin extends TabExecutor {
@@ -33,11 +33,10 @@ public interface Plugin extends TabExecutor {
     public PluginDescriptionFile getDescription();
 
     /**
-     * Gets a {@link FileConfiguration} for this plugin, read through
-     * "config.yml"
-     * <p>
-     * If there is a default config.yml embedded in this plugin, it will be
-     * provided as a default for this Configuration.
+     * Gets a {@link FileConfiguration} for this plugin, read through "config.yml"
+     * <p />
+     * If there is a default config.yml embedded in this plugin, it will be provided
+     * as a default for this Configuration.
      *
      * @return Plugin configuration
      */
@@ -57,26 +56,20 @@ public interface Plugin extends TabExecutor {
     public void saveConfig();
 
     /**
-     * Saves the raw contents of the default config.yml file to the location
-     * retrievable by {@link #getConfig()}. If there is no default config.yml
-     * embedded in the plugin, an empty config.yml file is saved. This should
-     * fail silently if the config.yml already exists.
+     * Saves the raw contents of the default config.yml file to the location retrievable by {@link #getConfig()}.
+     * If there is no default config.yml embedded in the plugin, an empty config.yml file is saved.
+     * This should fail silently if the config.yml already exists.
      */
     public void saveDefaultConfig();
 
     /**
-     * Saves the raw contents of any resource embedded with a plugin's .jar
-     * file assuming it can be found using {@link #getResource(String)}.
-     * <p>
-     * The resource is saved into the plugin's data folder using the same
-     * hierarchy as the .jar file (subdirectories are preserved).
+     * Saves the raw contents of any resource embedded with a plugin's .jar file assuming it can be found using
+     * {@link #getResource(String)}. The resource is saved into the plugin's data folder using the same hierarchy
+     * as the .jar file (subdirectories are preserved).
      *
-     * @param resourcePath the embedded resource path to look for within the
-     *     plugin's .jar file. (No preceding slash).
-     * @param replace if true, the embedded resource will overwrite the
-     *     contents of an existing file.
-     * @throws IllegalArgumentException if the resource path is null, empty,
-     *     or points to a nonexistent resource.
+     * @param resourcePath the embedded resource path to look for within the plugin's .jar file. (No preceding slash).
+     * @param replace if true, the embedded resource will overwrite the contents of an existing file.
+     * @throws IllegalArgumentException if the resource path is null, empty, or points to a nonexistent resource.
      */
     public void saveResource(String resourcePath, boolean replace);
 
@@ -100,8 +93,7 @@ public interface Plugin extends TabExecutor {
     public Server getServer();
 
     /**
-     * Returns a value indicating whether or not this plugin is currently
-     * enabled
+     * Returns a value indicating whether or not this plugin is currently enabled
      *
      * @return true if this plugin is enabled, otherwise false
      */
@@ -114,9 +106,7 @@ public interface Plugin extends TabExecutor {
 
     /**
      * Called after a plugin is loaded but before it has been enabled.
-     * <p>
-     * When mulitple plugins are loaded, the onLoad() for all plugins is
-     * called before any onEnable() is called.
+     * When mulitple plugins are loaded, the onLoad() for all plugins is called before any onEnable() is called.
      */
     public void onLoad();
 
@@ -140,48 +130,33 @@ public interface Plugin extends TabExecutor {
     public void setNaggable(boolean canNag);
 
     /**
-     * Gets the {@link EbeanServer} tied to this plugin. This will only be
-     * available if enabled in the {@link
-     * PluginDescriptionFile#isDatabaseEnabled()}
-     * <p>
-     * <i>For more information on the use of <a href="http://www.avaje.org/">
-     * Avaje Ebeans ORM</a>, see <a
-     * href="http://www.avaje.org/ebean/documentation.html">Avaje Ebeans
-     * Documentation</a></i>
-     * <p>
-     * <i>For an example using Ebeans ORM, see <a
-     * href="https://github.com/Bukkit/HomeBukkit">Bukkit's Homebukkit Plugin
-     * </a></i>
+     * Gets the {@link EbeanServer} tied to this plugin
      *
-     * @return ebean server instance or null if not enabled
+     * @return Ebean server instance
      */
     public EbeanServer getDatabase();
 
     /**
-     * Gets a {@link ChunkGenerator} for use in a default world, as specified
-     * in the server configuration
+     * Gets a {@link ChunkGenerator} for use in a default world, as specified in the server configuration
      *
      * @param worldName Name of the world that this will be applied to
-     * @param id Unique ID, if any, that was specified to indicate which
-     *     generator was requested
+     * @param id Unique ID, if any, that was specified to indicate which generator was requested
      * @return ChunkGenerator for use in the default world generation
      */
     public ChunkGenerator getDefaultWorldGenerator(String worldName, String id);
 
     /**
-     * Returns the plugin logger associated with this server's logger. The
-     * returned logger automatically tags all log messages with the plugin's
-     * name.
+     * Returns the primary logger associated with this server instance. The returned logger automatically
+     * tags all log messages with the plugin's name.
      *
-     * @return Logger associated with this plugin
+     * @return Logger associated with this server
      */
     public Logger getLogger();
 
     /**
      * Returns the name of the plugin.
-     * <p>
-     * This should return the bare name of the plugin and should be used for
-     * comparison.
+     *
+     * This should return the bare name of the plugin and should be used for comparison.
      *
      * @return name of the plugin
      */

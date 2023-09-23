@@ -22,9 +22,7 @@ public enum CoalType {
      * Gets the associated data value representing this type of coal
      *
      * @return A byte containing the data value of this coal type
-     * @deprecated Magic value
      */
-    @Deprecated
     public byte getData() {
         return data;
     }
@@ -32,12 +30,11 @@ public enum CoalType {
     /**
      * Gets the type of coal with the given data value
      *
-     * @param data Data value to fetch
+     * @param data
+     *            Data value to fetch
      * @return The {@link CoalType} representing the given value, or null if
-     *     it doesn't exist
-     * @deprecated Magic value
+     *         it doesn't exist
      */
-    @Deprecated
     public static CoalType getByData(final byte data) {
         return BY_DATA.get(data);
     }

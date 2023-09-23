@@ -3,9 +3,7 @@ package org.bukkit.command.defaults;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -32,10 +30,9 @@ public class BanIpCommand extends VanillaCommand {
             return false;
         }
 
-        String reason = args.length > 0 ? StringUtils.join(args, ' ', 1, args.length) : null;
-
+        // TODO: Ban Reason support
         if (ipValidity.matcher(args[0]).matches()) {
-            processIPBan(args[0], sender, reason);
+            processIPBan(args[0], sender);
         } else {
             Player player = Bukkit.getPlayer(args[0]);
 
@@ -44,21 +41,15 @@ public class BanIpCommand extends VanillaCommand {
                 return false;
             }
 
-            processIPBan(player.getAddress().getAddress().getHostAddress(), sender, reason);
+            processIPBan(player.getAddress().getAddress().getHostAddress(), sender);
         }
 
         return true;
     }
 
-    private void processIPBan(String ip, CommandSender sender, String reason) {
-        Bukkit.getBanList(BanList.Type.IP).addBan(ip, reason, null, sender.getName());
-
-        // Find all matching players and kick
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            if (player.getAddress().getAddress().getHostAddress().equals(ip)) {
-                player.kickPlayer("You have been IP banned.");
-            }
-        }
+    private void processIPBan(String ip, CommandSender sender) {
+        // TODO: Kick on ban
+        Bukkit.banIP(ip);
 
         Command.broadcastCommandMessage(sender, "Banned IP Address " + ip);
     }

@@ -16,11 +16,6 @@ public class Coal extends MaterialData {
         setType(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Coal(final int type) {
         super(type);
     }
@@ -29,20 +24,10 @@ public class Coal extends MaterialData {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Coal(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Coal(final Material type, final byte data) {
         super(type, data);
     }

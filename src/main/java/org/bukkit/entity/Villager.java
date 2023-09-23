@@ -4,17 +4,16 @@ package org.bukkit.entity;
  * Represents a villager NPC
  */
 public interface Villager extends Ageable, NPC {
-
     /**
      * Gets the current profession of this villager.
      *
      * @return Current profession.
      */
     public Profession getProfession();
-
+    
     /**
      * Sets the new profession of this villager.
-     *
+     * 
      * @param profession New profession.
      */
     public void setProfession(Profession profession);
@@ -47,9 +46,7 @@ public interface Villager extends Ageable, NPC {
          * Gets the ID of this profession.
          *
          * @return Profession ID.
-         * @deprecated Magic value
          */
-        @Deprecated
         public int getId() {
             return id;
         }
@@ -59,9 +56,7 @@ public interface Villager extends Ageable, NPC {
          *
          * @param id ID of the profession to get.
          * @return Resulting profession, or null if not found.
-         * @deprecated Magic value
          */
-        @Deprecated
         public static Profession getProfession(int id) {
             return (id >= professions.length) ? null : professions[id];
         }

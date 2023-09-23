@@ -18,20 +18,10 @@ public class CocoaPlant extends MaterialData implements Directional, Attachable 
         super(Material.COCOA);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public CocoaPlant(final int type) {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public CocoaPlant(final int type, final byte data) {
         super(type, data);
     }
@@ -49,7 +39,6 @@ public class CocoaPlant extends MaterialData implements Directional, Attachable 
 
     /**
      * Get size of plant
-     *
      * @return size
      */
     public CocoaPlantSize getSize() {
@@ -65,7 +54,6 @@ public class CocoaPlant extends MaterialData implements Directional, Attachable 
 
     /**
      * Set size of plant
-     *
      * @param sz - size of plant
      */
     public void setSize(CocoaPlantSize sz) {

@@ -17,19 +17,12 @@ public class Step extends TexturedMaterial {
         textures.add(Material.COBBLESTONE);
         textures.add(Material.BRICK);
         textures.add(Material.SMOOTH_BRICK);
-        textures.add(Material.NETHER_BRICK);
-        textures.add(Material.QUARTZ_BLOCK);
     }
 
     public Step() {
         super(Material.STEP);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Step(final int type) {
         super(type);
     }
@@ -41,20 +34,10 @@ public class Step extends TexturedMaterial {
         }
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Step(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Step(final Material type, final byte data) {
         super(type, data);
     }
@@ -66,18 +49,15 @@ public class Step extends TexturedMaterial {
 
     /**
      * Test if step is inverted
-     *
      * @return true if inverted (top half), false if normal (bottom half)
      */
     public boolean isInverted() {
         return ((getData() & 0x8) != 0);
     }
-
+    
     /**
      * Set step inverted state
-     *
-     * @param inv - true if step is inverted (top half), false if step is
-     *     normal (bottom half)
+     * @param inv - true if step is inverted (top half), false if step is normal (bottom half)
      */
     public void setInverted(boolean inv) {
         int dat = getData() & 0x7;
@@ -86,22 +66,12 @@ public class Step extends TexturedMaterial {
         }
         setData((byte) dat);
     }
-
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
+    
     @Override
     protected int getTextureIndex() {
         return getData() & 0x7;
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     @Override
     protected void setTextureIndex(int idx) {
         setData((byte) ((getData() & 0x8) | idx));

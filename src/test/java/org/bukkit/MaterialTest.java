@@ -15,11 +15,8 @@ public class MaterialTest {
     }
 
     @Test
-    public void getById() throws Throwable {
+    public void getById() {
         for (Material material : Material.values()) {
-            if (material.getClass().getField(material.name()).getAnnotation(Deprecated.class) != null) {
-                continue;
-            }
             assertThat(Material.getMaterial(material.getId()), is(material));
         }
     }
@@ -59,11 +56,8 @@ public class MaterialTest {
     }
 
     @Test
-    public void matchMaterialById() throws Throwable {
+    public void matchMaterialById() {
         for (Material material : Material.values()) {
-            if (material.getClass().getField(material.name()).getAnnotation(Deprecated.class) != null) {
-                continue;
-            }
             assertThat(Material.matchMaterial(String.valueOf(material.getId())), is(material));
         }
     }

@@ -22,11 +22,6 @@ public class EnderChest extends DirectionalContainer {
         setFacingDirection(direction);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public EnderChest(final int type) {
         super(type);
     }
@@ -35,20 +30,10 @@ public class EnderChest extends DirectionalContainer {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public EnderChest(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public EnderChest(final Material type, final byte data) {
         super(type, data);
     }

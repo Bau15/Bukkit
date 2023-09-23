@@ -21,11 +21,6 @@ public class Skull extends MaterialData implements Directional {
         setFacingDirection(direction);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Skull(final int type) {
         super(type);
     }
@@ -34,20 +29,10 @@ public class Skull extends MaterialData implements Directional {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Skull(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Skull(final Material type, final byte data) {
         super(type, data);
     }

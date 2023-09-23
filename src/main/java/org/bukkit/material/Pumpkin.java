@@ -22,11 +22,6 @@ public class Pumpkin extends MaterialData implements Directional {
         setFacingDirection(direction);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Pumpkin(final int type) {
         super(type);
     }
@@ -35,20 +30,10 @@ public class Pumpkin extends MaterialData implements Directional {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Pumpkin(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Pumpkin(final Material type, final byte data) {
         super(type, data);
     }

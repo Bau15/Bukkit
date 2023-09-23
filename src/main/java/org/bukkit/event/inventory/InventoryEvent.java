@@ -30,8 +30,7 @@ public class InventoryEvent extends Event {
     }
 
     /**
-     * Gets the list of players viewing the primary (upper) inventory involved
-     * in this event
+     * Gets the list of players viewing the primary (upper) inventory involved in this event
      *
      * @return A list of people viewing.
      */

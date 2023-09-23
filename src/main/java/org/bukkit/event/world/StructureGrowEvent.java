@@ -9,8 +9,7 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
 /**
- * Event that is called when an organic structure attempts to grow (Sapling ->
- * Tree), (Mushroom -> Huge Mushroom), naturally or using bonemeal.
+ * Event that is called when an organic structure attempts to grow (Sapling -> Tree), (Mushroom -> Huge Mushroom), naturally or using bonemeal.
  */
 public class StructureGrowEvent extends WorldEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
@@ -40,8 +39,7 @@ public class StructureGrowEvent extends WorldEvent implements Cancellable {
     }
 
     /**
-     * Gets the species type (birch, normal, pine, red mushroom, brown
-     * mushroom)
+     * Gets the species type (birch, normal, pine, red mushroom, brown mushroom)
      *
      * @return Structure species
      */
@@ -61,8 +59,7 @@ public class StructureGrowEvent extends WorldEvent implements Cancellable {
     /**
      * Gets the player that created the structure.
      *
-     * @return Player that created the structure, null if was not created
-     *     manually
+     * @return Player that created the structure, null if was not created manually
      */
     public Player getPlayer() {
         return player;

@@ -4,8 +4,7 @@ import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 
 /**
- * An InactivityConversationCanceller will cancel a {@link Conversation} after
- * a period of inactivity by the user.
+ * An InactivityConversationCanceller will cancel a {@link Conversation} after a period of inactivity by the user.
  */
 public class InactivityConversationCanceller implements ConversationCanceller {
     protected Plugin plugin;
@@ -15,7 +14,6 @@ public class InactivityConversationCanceller implements ConversationCanceller {
 
     /**
      * Creates an InactivityConversationCanceller.
-     *
      * @param plugin The owning plugin.
      * @param timeoutSeconds The number of seconds of inactivity to wait.
      */
@@ -67,10 +65,8 @@ public class InactivityConversationCanceller implements ConversationCanceller {
     }
 
     /**
-     * Subclasses of InactivityConversationCanceller can override this method
-     * to take additional actions when the inactivity timer abandons the
-     * conversation.
-     *
+     * Subclasses of InactivityConversationCanceller can override this method to take additional actions when the
+     * inactivity timer abandons the conversation.
      * @param conversation The conversation being abandoned.
      */
     protected void cancelling(Conversation conversation) {

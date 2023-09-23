@@ -4,8 +4,7 @@ import java.awt.Image;
 
 /**
  * Represents a canvas for drawing to a map. Each canvas is associated with a
- * specific {@link MapRenderer} and represents that renderer's layer on the
- * map.
+ * specific {@link MapRenderer} and represents that renderer's layer on the map.
  */
 public interface MapCanvas {
 

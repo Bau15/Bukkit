@@ -6,7 +6,6 @@ import java.util.Map;
 
 /**
  * Represents a type of creature.
- *
  * @deprecated Use EntityType instead.
  */
 @Deprecated
@@ -66,11 +65,6 @@ public enum CreatureType {
         return clazz;
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public short getTypeId() {
         return typeId;
     }
@@ -79,11 +73,6 @@ public enum CreatureType {
         return NAME_MAP.get(name);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public static CreatureType fromId(int id) {
         if (id > Short.MAX_VALUE) {
             return null;

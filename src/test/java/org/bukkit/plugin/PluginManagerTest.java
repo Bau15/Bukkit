@@ -1,14 +1,12 @@
 package org.bukkit.plugin;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static junit.framework.Assert.*;
 
+import org.bukkit.Server;
 import org.bukkit.TestServer;
+import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.event.Event;
 import org.bukkit.event.TestEvent;
-import org.bukkit.permissions.Permission;
-
-import org.junit.After;
 import org.junit.Test;
 
 public class PluginManagerTest {
@@ -16,9 +14,10 @@ public class PluginManagerTest {
         volatile Object value = null;
     }
 
-    private static final PluginManager pm = TestServer.getInstance().getPluginManager();
-
-    private final MutableObject store = new MutableObject();
+    final Server server = TestServer.getInstance();
+    final SimpleCommandMap commandMap = new SimpleCommandMap(server);
+    final PluginManager pm = new SimplePluginManager(server, commandMap);
+    final MutableObject store = new MutableObject();
 
     @Test
     public void testAsyncSameThread() {
@@ -26,7 +25,7 @@ public class PluginManagerTest {
         try {
             pm.callEvent(event);
         } catch (IllegalStateException ex) {
-            assertThat(event.getEventName() + " cannot be triggered asynchronously from primary server thread.", is(ex.getMessage()));
+            assertEquals(event.getEventName() + " cannot be triggered asynchronously from primary server thread.", ex.getMessage());
             return;
         }
         throw new IllegalStateException("No exception thrown");
@@ -51,13 +50,11 @@ public class PluginManagerTest {
                     } catch (Throwable ex) {
                         store.value = ex;
                     }
-                }
-            }
-        );
+                }});
         secondThread.start();
         secondThread.join();
-        assertThat(store.value, is(instanceOf(IllegalStateException.class)));
-        assertThat(event.getEventName() + " cannot be triggered asynchronously from inside synchronized code.", is(((Throwable) store.value).getMessage()));
+        assertTrue(store.value instanceof IllegalStateException);
+        assertEquals(event.getEventName() + " cannot be triggered asynchronously from inside synchronized code.", ((Throwable) store.value).getMessage());
     }
 
     @Test
@@ -90,9 +87,7 @@ public class PluginManagerTest {
                     } catch (Throwable ex) {
                         store.value = ex;
                     }
-                }
-            }
-        );
+                }});
         secondThread.start();
         secondThread.join();
         if (store.value != null) {
@@ -113,64 +108,11 @@ public class PluginManagerTest {
                     } catch (Throwable ex) {
                         store.value = ex;
                     }
-                }
-            }
-        );
+                }});
         secondThread.start();
         secondThread.join();
         if (store.value != null) {
             throw new RuntimeException((Throwable) store.value);
         }
-    }
-
-    @Test
-    public void testRemovePermissionByNameLower() {
-        this.testRemovePermissionByName("lower");
-    }
-
-    @Test
-    public void testRemovePermissionByNameUpper() {
-        this.testRemovePermissionByName("UPPER");
-    }
-
-    @Test
-    public void testRemovePermissionByNameCamel() {
-        this.testRemovePermissionByName("CaMeL");
-    }
-
-    public void testRemovePermissionByPermissionLower() {
-        this.testRemovePermissionByPermission("lower");
-    }
-
-    @Test
-    public void testRemovePermissionByPermissionUpper() {
-        this.testRemovePermissionByPermission("UPPER");
-    }
-
-    @Test
-    public void testRemovePermissionByPermissionCamel() {
-        this.testRemovePermissionByPermission("CaMeL");
-    }
-
-    private void testRemovePermissionByName(final String name) {
-        final Permission perm = new Permission(name);
-        pm.addPermission(perm);
-        assertThat("Permission \"" + name + "\" was not added", pm.getPermission(name), is(perm));
-        pm.removePermission(name);
-        assertThat("Permission \"" + name + "\" was not removed", pm.getPermission(name), is(nullValue()));
-    }
-
-    private void testRemovePermissionByPermission(final String name) {
-        final Permission perm = new Permission(name);
-        pm.addPermission(perm);
-        assertThat("Permission \"" + name + "\" was not added", pm.getPermission(name), is(perm));
-        pm.removePermission(perm);
-        assertThat("Permission \"" + name + "\" was not removed", pm.getPermission(name), is(nullValue()));
-    }
-
-    @After
-    public void tearDown() {
-        pm.clearPlugins();
-        assertThat(pm.getPermissions(), is(empty()));
     }
 }

@@ -68,8 +68,7 @@ public enum Effect {
      */
     STEP_SOUND(2001, Type.SOUND, Material.class),
     /**
-     * Visual effect of a splash potion breaking. Needs potion data value as
-     * additional info.
+     * Visual effect of a splash potion breaking. Needs potion data value as additional info.
      */
     POTION_BREAK(2002, Type.VISUAL, Potion.class),
     /**
@@ -100,9 +99,7 @@ public enum Effect {
      * Gets the ID for this effect.
      *
      * @return ID of this effect
-     * @deprecated Magic value
      */
-    @Deprecated
     public int getId() {
         return this.id;
     }
@@ -115,8 +112,7 @@ public enum Effect {
     }
 
     /**
-     * @return The class which represents data for this effect, or null if
-     *     none
+     * @return The class which represents data for this effect, or null if none
      */
     public Class<?> getData() {
         return this.data;
@@ -127,9 +123,7 @@ public enum Effect {
      *
      * @param id ID of the Effect to return
      * @return Effect with the given ID
-     * @deprecated Magic value
      */
-    @Deprecated
     public static Effect getById(int id) {
         return BY_ID.get(id);
     }

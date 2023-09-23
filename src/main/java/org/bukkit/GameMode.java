@@ -7,13 +7,11 @@ import org.bukkit.entity.HumanEntity;
 import com.google.common.collect.Maps;
 
 /**
- * Represents the various type of game modes that {@link HumanEntity}s may
- * have
+ * Represents the various type of game modes that {@link HumanEntity}s may have
  */
 public enum GameMode {
     /**
-     * Creative mode may fly, build instantly, become invulnerable and create
-     * free items.
+     * Creative mode may fly, build instantly, become invulnerable and create free items.
      */
     CREATIVE(1),
 
@@ -23,7 +21,7 @@ public enum GameMode {
     SURVIVAL(0),
 
     /**
-     * Adventure mode cannot break blocks without the correct tools.
+     * Adventure mode cannot break blocks, use chat, use buckets, etc.
      */
     ADVENTURE(2);
 
@@ -38,9 +36,7 @@ public enum GameMode {
      * Gets the mode value associated with this GameMode
      *
      * @return An integer value of this gamemode
-     * @deprecated Magic value
      */
-    @Deprecated
     public int getValue() {
         return value;
     }
@@ -49,11 +45,8 @@ public enum GameMode {
      * Gets the GameMode represented by the specified value
      *
      * @param value Value to check
-     * @return Associative {@link GameMode} with the given value, or null if
-     *     it doesn't exist
-     * @deprecated Magic value
+     * @return Associative {@link GameMode} with the given value, or null if it doesn't exist
      */
-    @Deprecated
     public static GameMode getByValue(final int value) {
         return BY_ID.get(value);
     }

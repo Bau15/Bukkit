@@ -6,8 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * FixedSetPrompt is the base class for any prompt that requires a fixed set
- * response from the user.
+ * FixedSetPrompt is the base class for any prompt that requires a fixed set response from the user.
  */
 public abstract class FixedSetPrompt extends ValidatingPrompt {
     
@@ -15,11 +14,8 @@ public abstract class FixedSetPrompt extends ValidatingPrompt {
 
     /**
      * Creates a FixedSetPrompt from a set of strings.
-     * <p>
      * foo = new FixedSetPrompt("bar", "cheese", "panda");
-     *
-     * @param fixedSet A fixed set of strings, one of which the user must
-     *     type.
+     * @param fixedSet A fixed set of strings, one of which the user must type.
      */
     public FixedSetPrompt(String... fixedSet) {
         super();
@@ -34,11 +30,9 @@ public abstract class FixedSetPrompt extends ValidatingPrompt {
     }
 
     /**
-     * Utility function to create a formatted string containing all the
-     * options declared in the constructor.
-     *
-     * @return the options formatted like "[bar, cheese, panda]" if bar,
-     *     cheese, and panda were the options used
+     * Utility function to create a formatted string containing all the options declared in the constructor.
+     * The result is formatted like "[bar, cheese, panda]"
+     * @return
      */
     protected String formatFixedSet() {
         return "[" + StringUtils.join(fixedSet, ", ") + "]";

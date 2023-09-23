@@ -1,6 +1,5 @@
 package org.bukkit.command.defaults;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -24,7 +23,7 @@ public class ListCommand extends VanillaCommand {
 
         StringBuilder online = new StringBuilder();
 
-        final Collection<? extends Player> players = Bukkit.getOnlinePlayers();
+        Player[] players = Bukkit.getOnlinePlayers();
 
         for (Player player : players) {
             // If a player is hidden from the sender don't show them in the list
@@ -38,7 +37,7 @@ public class ListCommand extends VanillaCommand {
             online.append(player.getDisplayName());
         }
 
-        sender.sendMessage("There are " + players.size() + "/" + Bukkit.getMaxPlayers() + " players online:\n" + online.toString());
+        sender.sendMessage("There are " + players.length + "/" + Bukkit.getMaxPlayers() + " players online:\n" + online.toString());
 
         return true;
     }

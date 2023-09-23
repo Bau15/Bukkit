@@ -11,11 +11,6 @@ public class Torch extends SimpleAttachableMaterialData {
         super(Material.TORCH);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Torch(final int type) {
         super(type);
     }
@@ -24,20 +19,10 @@ public class Torch extends SimpleAttachableMaterialData {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Torch(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Torch(final Material type, final byte data) {
         super(type, data);
     }

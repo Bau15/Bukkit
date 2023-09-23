@@ -6,8 +6,7 @@ package org.bukkit.entity;
 public interface Boat extends Vehicle {
 
     /**
-     * Gets the maximum speed of a boat. The speed is unrelated to the
-     * velocity.
+     * Gets the maximum speed of a boat. The speed is unrelated to the velocity.
      *
      * @return The max speed.
      */

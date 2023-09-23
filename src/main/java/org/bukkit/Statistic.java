@@ -1,108 +1,84 @@
 package org.bukkit;
 
+import java.util.Map;
+
+import com.google.common.collect.Maps;
+
 /**
- * Represents a countable statistic, which is tracked by the server.
+ * Represents a countable statistic, which is collected by the client
  */
 public enum Statistic {
-    DAMAGE_DEALT,
-    DAMAGE_TAKEN,
-    DEATHS,
-    MOB_KILLS,
-    PLAYER_KILLS,
-    FISH_CAUGHT,
-    ANIMALS_BRED,
-    TREASURE_FISHED,
-    JUNK_FISHED,
-    LEAVE_GAME,
-    JUMP,
-    DROP,
-    PLAY_ONE_TICK,
-    WALK_ONE_CM,
-    SWIM_ONE_CM,
-    FALL_ONE_CM,
-    CLIMB_ONE_CM,
-    FLY_ONE_CM,
-    DIVE_ONE_CM,
-    MINECART_ONE_CM,
-    BOAT_ONE_CM,
-    PIG_ONE_CM,
-    HORSE_ONE_CM,
-    MINE_BLOCK(Type.BLOCK),
-    USE_ITEM(Type.ITEM),
-    BREAK_ITEM(Type.ITEM),
-    CRAFT_ITEM(Type.ITEM),
-    KILL_ENTITY(Type.ENTITY),
-    ENTITY_KILLED_BY(Type.ENTITY);
+    DAMAGE_DEALT(2020),
+    DAMAGE_TAKEN(2021),
+    DEATHS(2022),
+    MOB_KILLS(2023),
+    PLAYER_KILLS(2024),
+    FISH_CAUGHT(2025),
+    MINE_BLOCK(16777216, true),
+    USE_ITEM(6908288, false),
+    BREAK_ITEM(16973824, true);
 
-    private final Type type;
+    private final static Map<Integer, Statistic> BY_ID = Maps.newHashMap();
+    private final int id;
+    private final boolean isSubstat;
+    private final boolean isBlock;
 
-    private Statistic() {
-        this(Type.UNTYPED);
+    private Statistic(int id) {
+        this(id, false, false);
     }
 
-    private Statistic(Type type) {
-        this.type = type;
+    private Statistic(int id, boolean isBlock) {
+        this(id, true, isBlock);
+    }
+
+    private Statistic(int id, boolean isSubstat, boolean isBlock) {
+        this.id = id;
+        this.isSubstat = isSubstat;
+        this.isBlock = isBlock;
     }
 
     /**
-     * Gets the type of this statistic.
+     * Gets the ID for this statistic.
      *
-     * @return the type of this statistic
+     * @return ID of this statistic
      */
-    public Type getType() {
-        return type;
+    public int getId() {
+        return id;
     }
 
     /**
      * Checks if this is a substatistic.
-     * <p>
-     * A substatistic exists en masse for each block, item, or entitytype, depending on
-     * {@link #getType()}.
-     * <p>
-     * This is a redundant method and equivalent to checking
-     * <code>getType() != Type.UNTYPED</code>
+     * <p />
+     * A substatistic exists in mass for each block or item, depending on {@link #isBlock()}
      *
      * @return true if this is a substatistic
      */
     public boolean isSubstatistic() {
-        return type != Type.UNTYPED;
+        return isSubstat;
     }
 
     /**
-     * Checks if this is a substatistic dealing with blocks.
-     * <p>
-     * This is a redundant method and equivalent to checking
-     * <code>getType() == Type.BLOCK</code>
+     * Checks if this is a substatistic dealing with blocks (As opposed to items)
      *
-     * @return true if this deals with blocks
+     * @return true if this deals with blocks, false if with items
      */
     public boolean isBlock() {
-        return type == Type.BLOCK;
+        return isSubstat && isBlock;
     }
 
     /**
-     * The type of statistic.
+     * Gets the statistic associated with the given ID.
      *
+     * @param id ID of the statistic to return
+     * @return statistic with the given ID
      */
-    public enum Type {
-        /**
-         * Statistics of this type do not require a qualifier.
-         */
-        UNTYPED,
+    public static Statistic getById(int id) {
+        return BY_ID.get(id);
+    }
 
-        /**
-         * Statistics of this type require an Item Material qualifier.
-         */
-        ITEM,
-
-        /**
-         * Statistics of this type require a Block Material qualifier.
-         */
-        BLOCK,
-
-        /**
-         * Statistics of this type require an EntityType qualifier.
-         */
-        ENTITY;
+    static {
+        for (Statistic statistic : values()) {
+            BY_ID.put(statistic.id, statistic);
+        }
     }
 }

@@ -10,8 +10,7 @@ public abstract class MapRenderer {
     private boolean contextual;
 
     /**
-     * Initialize the map renderer base to be non-contextual. See {@link
-     * #isContextual()}.
+     * Initialize the map renderer base to be non-contextual. See {@link #isContextual()}.
      */
     public MapRenderer() {
         this(false);
@@ -20,8 +19,7 @@ public abstract class MapRenderer {
     /**
      * Initialize the map renderer base with the given contextual status.
      *
-     * @param contextual Whether the renderer is contextual. See {@link
-     *     #isContextual()}.
+     * @param contextual Whether the renderer is contextual. See {@link #isContextual()}.
      */
     public MapRenderer(boolean contextual) {
         this.contextual = contextual;

@@ -11,11 +11,6 @@ public class Button extends SimpleAttachableMaterialData implements Redstone {
         super(Material.STONE_BUTTON);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Button(final int type) {
         super(type);
     }
@@ -24,20 +19,10 @@ public class Button extends SimpleAttachableMaterialData implements Redstone {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Button(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Button(final Material type, final byte data) {
         super(type, data);
     }

@@ -3,7 +3,6 @@ package org.bukkit.event.entity;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
-import org.bukkit.util.NumberConversions;
 
 /**
  * Stores data for health-regain events
@@ -11,15 +10,10 @@ import org.bukkit.util.NumberConversions;
 public class EntityRegainHealthEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private boolean cancelled;
-    private double amount;
+    private int amount;
     private final RegainReason regainReason;
 
-    @Deprecated
     public EntityRegainHealthEvent(final Entity entity, final int amount, final RegainReason regainReason) {
-        this(entity, (double) amount, regainReason);
-    }
-
-    public EntityRegainHealthEvent(final Entity entity, final double amount, final RegainReason regainReason) {
         super(entity);
         this.amount = amount;
         this.regainReason = regainReason;
@@ -30,18 +24,8 @@ public class EntityRegainHealthEvent extends EntityEvent implements Cancellable 
      *
      * @return The amount of health regained
      */
-    public double getAmount() {
+    public int getAmount() {
         return amount;
-    }
-
-    /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public int _INVALID_getAmount() {
-        return NumberConversions.ceil(getAmount());
     }
 
     /**
@@ -49,18 +33,8 @@ public class EntityRegainHealthEvent extends EntityEvent implements Cancellable 
      *
      * @param amount the amount of health the entity will regain
      */
-    public void setAmount(double amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public void _INVALID_setAmount(int amount) {
-        setAmount(amount);
     }
 
     public boolean isCancelled() {
@@ -74,8 +48,7 @@ public class EntityRegainHealthEvent extends EntityEvent implements Cancellable 
     /**
      * Gets the reason for why the entity is regaining health
      *
-     * @return A RegainReason detailing the reason for the entity regaining
-     *     health
+     * @return A RegainReason detailing the reason for the entity regaining health
      */
     public RegainReason getRegainReason() {
         return regainReason;
@@ -96,13 +69,11 @@ public class EntityRegainHealthEvent extends EntityEvent implements Cancellable 
     public enum RegainReason {
 
         /**
-         * When a player regains health from regenerating due to Peaceful mode
-         * (difficulty=0)
+         * When a player regains health from regenerating due to Peaceful mode (difficulty=0)
          */
         REGEN,
         /**
-         * When a player regains health from regenerating due to their hunger
-         * being satisfied
+         * When a player regains health from regenerating due to their hunger being satisfied
          */
         SATIATED,
         /**

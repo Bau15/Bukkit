@@ -7,7 +7,6 @@ import org.bukkit.event.HandlerList;
 
 /**
  * Triggered when a painting is removed
- *
  * @deprecated Use {@link org.bukkit.event.hanging.HangingBreakEvent} instead.
  */
 @Deprecated

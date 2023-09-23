@@ -2,9 +2,8 @@ package org.bukkit.plugin;
 
 /**
  * Represents a base {@link Plugin}
- * <p>
- * Extend this class if your plugin is not a {@link
- * org.bukkit.plugin.java.JavaPlugin}
+ * <p />
+ * Extend this class if your plugin is not a {@link org.bukkit.plugin.java.JavaPlugin}
  */
 public abstract class PluginBase implements Plugin {
     @Override

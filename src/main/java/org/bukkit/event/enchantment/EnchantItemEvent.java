@@ -13,8 +13,7 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * Called when an ItemStack is successfully enchanted (currently at
- * enchantment table)
+ * Called when an ItemStack is successfully enchanted (currently at enchantment table)
  */
 public class EnchantItemEvent extends InventoryEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
@@ -66,7 +65,6 @@ public class EnchantItemEvent extends InventoryEvent implements Cancellable {
 
     /**
      * Get cost in exp levels of the enchantment
-     *
      * @return experience level cost
      */
     public int getExpLevelCost() {
@@ -75,7 +73,6 @@ public class EnchantItemEvent extends InventoryEvent implements Cancellable {
 
     /**
      * Set cost in exp levels of the enchantment
-     *
      * @param level - cost in levels
      */
     public void setExpLevelCost(int level) {
@@ -83,9 +80,8 @@ public class EnchantItemEvent extends InventoryEvent implements Cancellable {
     }
 
     /**
-     * Get map of enchantment (levels, keyed by type) to be added to item
-     * (modify map returned to change values). Note: Any enchantments not
-     * allowed for the item will be ignored
+     * Get map of enchantment (levels, keyed by type) to be added to item (modify map returned to change values)
+     * Note: Any enchantments not allowed for the item will be ignored
      *
      * @return map of enchantment levels, keyed by enchantment
      */
@@ -95,7 +91,6 @@ public class EnchantItemEvent extends InventoryEvent implements Cancellable {
 
     /**
      * Which button was pressed to initiate the enchanting.
-     *
      * @return The button index (0, 1, or 2).
      */
     public int whichButton() {

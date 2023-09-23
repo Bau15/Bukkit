@@ -4,7 +4,6 @@ package org.bukkit;
  * Represents various types of portals that can be made in a world.
  */
 public enum PortalType {
-
     /**
      * This is a Nether portal, made of obsidian.
      */

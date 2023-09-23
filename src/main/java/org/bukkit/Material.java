@@ -29,7 +29,6 @@ import org.bukkit.material.LongGrass;
 import org.bukkit.material.MaterialData;
 import org.bukkit.material.MonsterEggs;
 import org.bukkit.material.Mushroom;
-import org.bukkit.material.NetherWarts;
 import org.bukkit.material.PistonBaseMaterial;
 import org.bukkit.material.PistonExtensionMaterial;
 import org.bukkit.material.PoweredRail;
@@ -59,7 +58,7 @@ import org.bukkit.util.Java15Compat;
 import com.google.common.collect.Maps;
 
 /**
- * An enum of all material IDs accepted by the official server and client
+ * An enum of all material ids accepted by the official server + client
  */
 public enum Material {
     AIR(0, 0),
@@ -157,9 +156,7 @@ public enum Material {
     CAKE_BLOCK(92, 64, Cake.class),
     DIODE_BLOCK_OFF(93, Diode.class),
     DIODE_BLOCK_ON(94, Diode.class),
-    @Deprecated
     LOCKED_CHEST(95),
-    STAINED_GLASS(95),
     TRAP_DOOR(96, TrapDoor.class),
     MONSTER_EGGS(97, MonsterEggs.class),
     SMOOTH_BRICK(98, SmoothBrick.class),
@@ -179,7 +176,7 @@ public enum Material {
     NETHER_BRICK(112),
     NETHER_FENCE(113),
     NETHER_BRICK_STAIRS(114, Stairs.class),
-    NETHER_WARTS(115, NetherWarts.class),
+    NETHER_WARTS(115, MaterialData.class),
     ENCHANTMENT_TABLE(116),
     BREWING_STAND(117, MaterialData.class),
     CAULDRON(118, Cauldron.class),
@@ -210,31 +207,6 @@ public enum Material {
     WOOD_BUTTON(143, Button.class),
     SKULL(144, Skull.class),
     ANVIL(145),
-    TRAPPED_CHEST(146),
-    GOLD_PLATE(147),
-    IRON_PLATE(148),
-    REDSTONE_COMPARATOR_OFF(149),
-    REDSTONE_COMPARATOR_ON(150),
-    DAYLIGHT_DETECTOR(151),
-    REDSTONE_BLOCK(152),
-    QUARTZ_ORE(153),
-    HOPPER(154),
-    QUARTZ_BLOCK(155),
-    QUARTZ_STAIRS(156, Stairs.class),
-    ACTIVATOR_RAIL(157, PoweredRail.class),
-    DROPPER(158, Dispenser.class),
-    STAINED_CLAY(159),
-    STAINED_GLASS_PANE(160),
-    LEAVES_2(161),
-    LOG_2(162),
-    ACACIA_STAIRS(163, Stairs.class),
-    DARK_OAK_STAIRS(164, Stairs.class),
-    HAY_BLOCK(170),
-    CARPET(171),
-    HARD_CLAY(172),
-    COAL_BLOCK(173),
-    PACKED_ICE(174),
-    DOUBLE_PLANT(175),
     // ----- Item Separator -----
     IRON_SPADE(256, 1, 250),
     IRON_PICKAXE(257, 1, 250),
@@ -373,7 +345,7 @@ public enum Material {
     EXP_BOTTLE(384, 64),
     FIREBALL(385, 64),
     BOOK_AND_QUILL(386, 1),
-    WRITTEN_BOOK(387, 16),
+    WRITTEN_BOOK(387, 1),
     EMERALD(388, 64),
     ITEM_FRAME(389),
     FLOWER_POT_ITEM(390),
@@ -390,17 +362,6 @@ public enum Material {
     FIREWORK(401),
     FIREWORK_CHARGE(402),
     ENCHANTED_BOOK(403, 1),
-    REDSTONE_COMPARATOR(404),
-    NETHER_BRICK_ITEM(405),
-    QUARTZ(406),
-    EXPLOSIVE_MINECART(407, 1),
-    HOPPER_MINECART(408, 1),
-    IRON_BARDING(417, 1),
-    GOLD_BARDING(418, 1),
-    DIAMOND_BARDING(419, 1),
-    LEASH(420),
-    NAME_TAG(421),
-    COMMAND_MINECART(422, 1),
     GOLD_RECORD(2256, 1),
     GREEN_RECORD(2257, 1),
     RECORD_3(2258, 1),
@@ -460,9 +421,7 @@ public enum Material {
      * Gets the item ID or block ID of this Material
      *
      * @return ID of this material
-     * @deprecated Magic value
      */
-    @Deprecated
     public int getId() {
         return id;
     }
@@ -495,14 +454,12 @@ public enum Material {
     }
 
     /**
-     * Constructs a new MaterialData relevant for this Material, with the
-     * given initial data
+     * Constructs a new MaterialData relevant for this Material, with the given
+     * initial data
      *
      * @param raw Initial data to construct the MaterialData with
      * @return New MaterialData with the given data
-     * @deprecated Magic value
      */
-    @Deprecated
     public MaterialData getNewData(final byte raw) {
         try {
             return ctor.newInstance(id, raw);
@@ -569,9 +526,7 @@ public enum Material {
      *
      * @param id ID of the material to get
      * @return Material if found, or null
-     * @deprecated Magic value
      */
-    @Deprecated
     public static Material getMaterial(final int id) {
         if (byId.length > id && id >= 0) {
             return byId[id];
@@ -582,7 +537,6 @@ public enum Material {
 
     /**
      * Attempts to get the Material with the given name.
-     * <p>
      * This is a normal lookup, names must be the precise name they are given
      * in the enum.
      *
@@ -595,12 +549,8 @@ public enum Material {
 
     /**
      * Attempts to match the Material with the given name.
-     * <p>
-     * This is a match lookup; names will be converted to uppercase, then
-     * stripped of special characters in an attempt to format it like the
-     * enum.
-     * <p>
-     * Using this for match by ID is deprecated.
+     * This is a match lookup; names will be converted to uppercase, then stripped
+     * of special characters in an attempt to format it like the enum
      *
      * @param name Name of the material to get
      * @return Material if found, or null
@@ -644,8 +594,7 @@ public enum Material {
     }
 
     /**
-     * Check if the material is a block and solid (cannot be passed through by
-     * a player)
+     * Check if the material is a block and solid (cannot be passed through by a player)
      *
      * @return True if this material is a block and solid
      */
@@ -720,7 +669,6 @@ public enum Material {
             case JACK_O_LANTERN:
             case CAKE_BLOCK:
             case LOCKED_CHEST:
-            case STAINED_GLASS:
             case TRAP_DOOR:
             case MONSTER_EGGS:
             case SMOOTH_BRICK:
@@ -757,26 +705,6 @@ public enum Material {
             case BEACON:
             case COBBLE_WALL:
             case ANVIL:
-            case TRAPPED_CHEST:
-            case GOLD_PLATE:
-            case IRON_PLATE:
-            case DAYLIGHT_DETECTOR:
-            case REDSTONE_BLOCK:
-            case QUARTZ_ORE:
-            case HOPPER:
-            case QUARTZ_BLOCK:
-            case QUARTZ_STAIRS:
-            case DROPPER:
-            case STAINED_CLAY:
-            case HAY_BLOCK:
-            case HARD_CLAY:
-            case COAL_BLOCK:
-            case STAINED_GLASS_PANE:
-            case LEAVES_2:
-            case LOG_2:
-            case ACACIA_STAIRS:
-            case DARK_OAK_STAIRS:
-            case PACKED_ICE:
                 return true;
             default:
                 return false;
@@ -832,11 +760,6 @@ public enum Material {
             case POTATO:
             case WOOD_BUTTON:
             case SKULL:
-            case REDSTONE_COMPARATOR_OFF:
-            case REDSTONE_COMPARATOR_ON:
-            case ACTIVATOR_RAIL:
-            case CARPET:
-            case DOUBLE_PLANT:
                 return true;
             default:
                 return false;
@@ -872,6 +795,7 @@ public enum Material {
             case WOOD_PLATE:
             case JUKEBOX:
             case FENCE:
+            case LOCKED_CHEST:
             case TRAP_DOOR:
             case HUGE_MUSHROOM_1:
             case HUGE_MUSHROOM_2:
@@ -882,13 +806,6 @@ public enum Material {
             case SPRUCE_WOOD_STAIRS:
             case BIRCH_WOOD_STAIRS:
             case JUNGLE_WOOD_STAIRS:
-            case TRAPPED_CHEST:
-            case DAYLIGHT_DETECTOR:
-            case CARPET:
-            case LEAVES_2:
-            case LOG_2:
-            case ACACIA_STAIRS:
-            case DARK_OAK_STAIRS:
                 return true;
             default:
                 return false;
@@ -910,8 +827,6 @@ public enum Material {
             case LEAVES:
             case LONG_GRASS:
             case WOOL:
-            case YELLOW_FLOWER:
-            case RED_ROSE:
             case TNT:
             case BOOKSHELF:
             case WOOD_STAIRS:
@@ -922,12 +837,6 @@ public enum Material {
             case SPRUCE_WOOD_STAIRS:
             case BIRCH_WOOD_STAIRS:
             case JUNGLE_WOOD_STAIRS:
-            case HAY_BLOCK:
-            case COAL_BLOCK:
-            case LEAVES_2:
-            case LOG_2:
-            case CARPET:
-            case DOUBLE_PLANT:
                 return true;
             default:
                 return false;
@@ -985,6 +894,7 @@ public enum Material {
             case NETHERRACK:
             case SOUL_SAND:
             case JACK_O_LANTERN:
+            case LOCKED_CHEST:
             case MONSTER_EGGS:
             case SMOOTH_BRICK:
             case HUGE_MUSHROOM_1:
@@ -1000,32 +910,6 @@ public enum Material {
             case EMERALD_ORE:
             case EMERALD_BLOCK:
             case COMMAND:
-            case QUARTZ_ORE:
-            case QUARTZ_BLOCK:
-            case DROPPER:
-            case STAINED_CLAY:
-            case HAY_BLOCK:
-            case HARD_CLAY:
-            case COAL_BLOCK:
-            case LOG_2:
-            case PACKED_ICE:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    /**
-     * @return True if this material is affected by gravity.
-     */
-    public boolean hasGravity() {
-        if (!isBlock()) {
-            return false;
-        }
-        switch (this) {
-            case SAND:
-            case GRAVEL:
-            case ANVIL:
                 return true;
             default:
                 return false;

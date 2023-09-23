@@ -23,9 +23,7 @@ public interface SkullMeta extends ItemMeta {
 
     /**
      * Sets the owner of the skull.
-     * <p>
-     * Plugins should check that hasOwner() returns true before calling this
-     * plugin.
+     * Plugins should check that hasOwner() returns true before calling this plugin.
      *
      * @param owner the new owner of the skull
      * @return true if the owner was successfully set

@@ -25,11 +25,6 @@ public class Bed extends MaterialData implements Directional {
         setFacingDirection(direction);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Bed(final int type) {
         super(type);
     }
@@ -38,20 +33,10 @@ public class Bed extends MaterialData implements Directional {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Bed(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Bed(final Material type, final byte data) {
         super(type, data);
     }

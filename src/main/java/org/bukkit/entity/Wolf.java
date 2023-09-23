@@ -15,10 +15,8 @@ public interface Wolf extends Animals, Tameable {
     public boolean isAngry();
 
     /**
-     * Sets the anger of this wolf.
-     * <p>
-     * An angry wolf can not be fed or tamed, and will actively look for
-     * targets to attack.
+     * Sets the anger of this wolf
+     * An angry wolf can not be fed or tamed, and will actively look for targets to attack.
      *
      * @param angry true if angry
      */
@@ -32,8 +30,7 @@ public interface Wolf extends Animals, Tameable {
     public boolean isSitting();
 
     /**
-     * Sets if this wolf is sitting.
-     * <p>
+     * Sets if this wolf is sitting
      * Will remove any path that the wolf was following beforehand.
      *
      * @param sitting true if sitting

@@ -5,9 +5,6 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.HandlerList;
 
-/**
- * Called when a piston retracts
- */
 public class BlockPistonRetractEvent extends BlockPistonEvent {
     private static final HandlerList handlers = new HandlerList();
     public BlockPistonRetractEvent(final Block block, final BlockFace direction) {
@@ -15,8 +12,8 @@ public class BlockPistonRetractEvent extends BlockPistonEvent {
     }
 
     /**
-     * Gets the location where the possible moving block might be if the
-     * retracting piston is sticky.
+     * Gets the location where the possible moving block might be if the retracting
+     * piston is sticky.
      *
      * @return The possible location of the possibly moving block.
      */

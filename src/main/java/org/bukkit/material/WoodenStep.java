@@ -12,11 +12,6 @@ public class WoodenStep extends MaterialData {
         super(Material.WOOD_STEP);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public WoodenStep(final int type) {
         super(type);
     }
@@ -32,20 +27,10 @@ public class WoodenStep extends MaterialData {
         setInverted(inv);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public WoodenStep(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public WoodenStep(final Material type, final byte data) {
         super(type, data);
     }
@@ -70,7 +55,6 @@ public class WoodenStep extends MaterialData {
 
     /**
      * Test if step is inverted
-     *
      * @return true if inverted (top half), false if normal (bottom half)
      */
     public boolean isInverted() {
@@ -79,9 +63,7 @@ public class WoodenStep extends MaterialData {
     
     /**
      * Set step inverted state
-     *
-     * @param inv - true if step is inverted (top half), false if step is
-     *     normal (bottom half)
+     * @param inv - true if step is inverted (top half), false if step is normal (bottom half)
      */
     public void setInverted(boolean inv) {
         int dat = getData() & 0x7;

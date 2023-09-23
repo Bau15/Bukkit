@@ -10,11 +10,6 @@ public class DetectorRail extends ExtendedRails implements PressureSensor {
         super(Material.DETECTOR_RAIL);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public DetectorRail(final int type) {
         super(type);
     }
@@ -23,20 +18,10 @@ public class DetectorRail extends ExtendedRails implements PressureSensor {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public DetectorRail(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public DetectorRail(final Material type, final byte data) {
         super(type, data);
     }

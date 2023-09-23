@@ -5,9 +5,8 @@ import org.bukkit.plugin.Plugin;
 import java.util.Map;
 
 /**
- * A ConversationContext provides continuity between nodes in the prompt graph
- * by giving the developer access to the subject of the conversation and a
- * generic map for storing values that are shared between all {@link Prompt}
+ * A ConversationContext provides continuity between nodes in the prompt graph by giving the developer access to the
+ * subject of the conversation and a generic map for storing values that are shared between all {@link Prompt}
  * invocations.
  */
 public class ConversationContext {
@@ -18,8 +17,7 @@ public class ConversationContext {
     /**
      * @param plugin The owning plugin.
      * @param forWhom The subject of the conversation.
-     * @param initialSessionData Any initial values to put in the sessionData
-     *     map.
+     * @param initialSessionData Any initial values to put in the sessionData map.
      */
     public ConversationContext(Plugin plugin, Conversable forWhom, Map<Object, Object> initialSessionData) {
         this.plugin = plugin;
@@ -29,7 +27,6 @@ public class ConversationContext {
 
     /**
      * Gets the plugin that owns this conversation.
-     *
      * @return The owning plugin.
      */
     public Plugin getPlugin() {
@@ -38,7 +35,6 @@ public class ConversationContext {
 
     /**
      * Gets the subject of the conversation.
-     *
      * @return The subject of the conversation.
      */
     public Conversable getForWhom() {
@@ -46,10 +42,8 @@ public class ConversationContext {
     }
 
     /**
-     * Gets session data shared between all {@link Prompt} invocations. Use
-     * this as a way to pass data through each Prompt as the conversation
-     * develops.
-     *
+     * Gets session data shared between all {@link Prompt} invocations. Use this as a way
+     * to pass data through each Prompt as the conversation develops.
      * @param key The session data key.
      * @return The requested session data.
      */
@@ -58,10 +52,8 @@ public class ConversationContext {
     }
 
     /**
-     * Sets session data shared between all {@link Prompt} invocations. Use
-     * this as a way to pass data through each prompt as the conversation
-     * develops.
-     *
+     * Sets session data shared between all {@link Prompt} invocations. Use this as a way to pass
+     * data through each prompt as the conversation develops.
      * @param key The session data key.
      * @param value The session data value.
      */

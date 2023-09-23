@@ -12,8 +12,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 
 /**
- * Represents a unique permission that may be attached to a {@link
- * Permissible}
+ * Represents a unique permission that may be attached to a {@link Permissible}
  */
 public class Permission {
     public static final PermissionDefault DEFAULT_PERMISSION = PermissionDefault.OP;
@@ -77,9 +76,8 @@ public class Permission {
 
     /**
      * Gets the children of this permission.
-     * <p>
-     * If you change this map in any form, you must call {@link
-     * #recalculatePermissibles()} to recalculate all {@link Permissible}s
+     *
+     * If you change this map in any form, you must call {@link #recalculatePermissibles()} to recalculate all {@link Permissible}s
      *
      * @return Permission children
      */
@@ -98,11 +96,9 @@ public class Permission {
 
     /**
      * Sets the default value of this permission.
-     * <p>
-     * This will not be saved to disk, and is a temporary operation until the
-     * server reloads permissions. Changing this default will cause all {@link
-     * Permissible}s that contain this permission to recalculate their
-     * permissions
+     * <p />
+     * This will not be saved to disk, and is a temporary operation until the server reloads permissions.
+     * Changing this default will cause all {@link Permissible}s that contain this permission to recalculate their permissions
      *
      * @param value The new default to set
      */
@@ -126,9 +122,8 @@ public class Permission {
 
     /**
      * Sets the description of this permission.
-     * <p>
-     * This will not be saved to disk, and is a temporary operation until the
-     * server reloads permissions.
+     * <p />
+     * This will not be saved to disk, and is a temporary operation until the server reloads permissions.
      *
      * @param value The new description to set
      */
@@ -141,9 +136,8 @@ public class Permission {
     }
 
     /**
-     * Gets a set containing every {@link Permissible} that has this
-     * permission.
-     * <p>
+     * Gets a set containing every {@link Permissible} that has this permission.
+     * <p />
      * This set cannot be modified.
      *
      * @return Set containing permissibles with this permission
@@ -154,9 +148,8 @@ public class Permission {
 
     /**
      * Recalculates all {@link Permissible}s that contain this permission.
-     * <p>
-     * This should be called after modifying the children, and is
-     * automatically called after modifying the default value
+     * <p />
+     * This should be called after modifying the children, and is automatically called after modifying the default value
      */
     public void recalculatePermissibles() {
         Set<Permissible> perms = getPermissibles();
@@ -170,9 +163,8 @@ public class Permission {
 
     /**
      * Adds this permission to the specified parent permission.
-     * <p>
-     * If the parent permission does not exist, it will be created and
-     * registered.
+     * <p />
+     * If the parent permission does not exist, it will be created and registered.
      *
      * @param name Name of the parent permission
      * @param value The value to set this permission to
@@ -206,18 +198,12 @@ public class Permission {
     }
 
     /**
-     * Loads a list of Permissions from a map of data, usually used from
-     * retrieval from a yaml file.
-     * <p>
-     * The data may contain a list of name:data, where the data contains the
-     * following keys:
-     * <ul>
-     * <li>default: Boolean true or false. If not specified, false.
-     * <li>children: Map<String, Boolean> of child permissions. If not
-     *     specified, empty list.
-     * <li>description: Short string containing a very small description of
-     *     this description. If not specified, empty string.
-     * </ul>
+     * Loads a list of Permissions from a map of data, usually used from retrieval from a yaml file.
+     * <p />
+     * The data may contain a list of name:data, where the data contains the following keys:
+     * default: Boolean true or false. If not specified, false.
+     * children: Map<String, Boolean> of child permissions. If not specified, empty list.
+     * description: Short string containing a very small description of this description. If not specified, empty string.
      *
      * @param data Map of permissions
      * @param error An error message to show if a permission is invalid.
@@ -239,16 +225,12 @@ public class Permission {
     }
 
     /**
-     * Loads a Permission from a map of data, usually used from retrieval from
-     * a yaml file.
-     * <p>
+     * Loads a Permission from a map of data, usually used from retrieval from a yaml file.
+     * <p />
      * The data may contain the following keys:
-     * <ul>
-     * <li>default: Boolean true or false. If not specified, false.
-     * <li>children: Map<String, Boolean> of child permissions. If not
-     *     specified, empty list.
-     * <li>description: Short string containing a very small description of
-     *     this description. If not specified, empty string.
+     * default: Boolean true or false. If not specified, false.
+     * children: Map<String, Boolean> of child permissions. If not specified, empty list.
+     * description: Short string containing a very small description of this description. If not specified, empty string.
      *
      * @param name Name of the permission
      * @param data Map of keys
@@ -259,17 +241,12 @@ public class Permission {
     }
 
     /**
-     * Loads a Permission from a map of data, usually used from retrieval from
-     * a yaml file.
-     * <p>
+     * Loads a Permission from a map of data, usually used from retrieval from a yaml file.
+     * <p />
      * The data may contain the following keys:
-     * <ul>
-     * <li>default: Boolean true or false. If not specified, false.
-     * <li>children: Map<String, Boolean> of child permissions. If not
-     *     specified, empty list.
-     * <li>description: Short string containing a very small description of
-     *     this description. If not specified, empty string.
-     * </ul>
+     * default: Boolean true or false. If not specified, false.
+     * children: Map<String, Boolean> of child permissions. If not specified, empty list.
+     * description: Short string containing a very small description of this description. If not specified, empty string.
      *
      * @param name Name of the permission
      * @param data Map of keys

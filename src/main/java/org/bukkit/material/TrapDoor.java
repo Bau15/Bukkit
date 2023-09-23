@@ -11,11 +11,6 @@ public class TrapDoor extends SimpleAttachableMaterialData implements Openable {
         super(Material.TRAP_DOOR);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public TrapDoor(final int type) {
         super(type);
     }
@@ -24,20 +19,10 @@ public class TrapDoor extends SimpleAttachableMaterialData implements Openable {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public TrapDoor(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public TrapDoor(final Material type, final byte data) {
         super(type, data);
     }
@@ -56,28 +41,6 @@ public class TrapDoor extends SimpleAttachableMaterialData implements Openable {
         }
 
         setData(data);
-    }
-
-    /**
-     * Test if trapdoor is inverted
-     *
-     * @return true if inverted (top half), false if normal (bottom half)
-     */
-    public boolean isInverted() {
-        return ((getData() & 0x8) != 0);
-    }
-
-    /**
-     * Set trapdoor inverted state
-     *
-     * @param inv - true if inverted (top half), false if normal (bottom half)
-     */
-    public void setInverted(boolean inv) {
-        int dat = getData() & 0x7;
-        if (inv) {
-            dat |= 0x8;
-        }
-        setData((byte) dat);
     }
 
     public BlockFace getAttachedFace() {
@@ -102,7 +65,7 @@ public class TrapDoor extends SimpleAttachableMaterialData implements Openable {
     }
 
     public void setFacingDirection(BlockFace face) {
-        byte data = (byte) (getData() & 0xC);
+        byte data = (byte) (getData() & 0x4);
 
         switch (face) {
             case SOUTH:
@@ -121,7 +84,7 @@ public class TrapDoor extends SimpleAttachableMaterialData implements Openable {
 
     @Override
     public String toString() {
-        return (isOpen() ? "OPEN " : "CLOSED ") + super.toString() + " with hinges set " + getAttachedFace() + (isInverted() ? " inverted" : "");
+        return (isOpen() ? "OPEN " : "CLOSED ") + super.toString() + " with hinges set " + getAttachedFace();
     }
 
     @Override

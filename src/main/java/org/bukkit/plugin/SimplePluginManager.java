@@ -62,8 +62,7 @@ public final class SimplePluginManager implements PluginManager {
      * Registers the specified plugin loader
      *
      * @param loader Class name of the PluginLoader to register
-     * @throws IllegalArgumentException Thrown when the given Class is not a
-     *     valid PluginLoader
+     * @throws IllegalArgumentException Thrown when the given Class is not a valid PluginLoader
      */
     public void registerInterface(Class<? extends PluginLoader> loader) throws IllegalArgumentException {
         PluginLoader instance;
@@ -131,35 +130,15 @@ public final class SimplePluginManager implements PluginManager {
             PluginDescriptionFile description = null;
             try {
                 description = loader.getPluginDescription(file);
-                String name = description.getName();
-                if (name.equalsIgnoreCase("bukkit") || name.equalsIgnoreCase("minecraft") || name.equalsIgnoreCase("mojang")) {
-                    server.getLogger().log(Level.SEVERE, "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "': Restricted Name");
-                    continue;
-                } else if (description.rawName.indexOf(' ') != -1) {
-                    server.getLogger().warning(String.format(
-                        "Plugin `%s' uses the space-character (0x20) in its name `%s' - this is discouraged",
-                        description.getFullName(),
-                        description.rawName
-                        ));
-                }
             } catch (InvalidDescriptionException ex) {
                 server.getLogger().log(Level.SEVERE, "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
                 continue;
             }
 
-            File replacedFile = plugins.put(description.getName(), file);
-            if (replacedFile != null) {
-                server.getLogger().severe(String.format(
-                    "Ambiguous plugin name `%s' for files `%s' and `%s' in `%s'",
-                    description.getName(),
-                    file.getPath(),
-                    replacedFile.getPath(),
-                    directory.getPath()
-                    ));
-            }
+            plugins.put(description.getName(), file);
 
             Collection<String> softDependencySet = description.getSoftDepend();
-            if (softDependencySet != null && !softDependencySet.isEmpty()) {
+            if (softDependencySet != null) {
                 if (softDependencies.containsKey(description.getName())) {
                     // Duplicates do not matter, they will be removed together if applicable
                     softDependencies.get(description.getName()).addAll(softDependencySet);
@@ -169,12 +148,12 @@ public final class SimplePluginManager implements PluginManager {
             }
 
             Collection<String> dependencySet = description.getDepend();
-            if (dependencySet != null && !dependencySet.isEmpty()) {
+            if (dependencySet != null) {
                 dependencies.put(description.getName(), new LinkedList<String>(dependencySet));
             }
 
             Collection<String> loadBeforeSet = description.getLoadBefore();
-            if (loadBeforeSet != null && !loadBeforeSet.isEmpty()) {
+            if (loadBeforeSet != null) {
                 for (String loadBeforeTarget : loadBeforeSet) {
                     if (softDependencies.containsKey(loadBeforeTarget)) {
                         softDependencies.get(loadBeforeTarget).add(description.getName());
@@ -300,15 +279,13 @@ public final class SimplePluginManager implements PluginManager {
 
     /**
      * Loads the plugin in the specified file
-     * <p>
+     * <p />
      * File must be valid according to the current enabled Plugin interfaces
      *
      * @param file File containing the plugin to load
      * @return The Plugin loaded, or null if it was invalid
-     * @throws InvalidPluginException Thrown when the specified file is not a
-     *     valid plugin
-     * @throws UnknownDependencyException If a required dependency could not
-     *     be found
+     * @throws InvalidPluginException Thrown when the specified file is not a valid plugin
+     * @throws UnknownDependencyException If a required dependency could not be found
      */
     public synchronized Plugin loadPlugin(File file) throws InvalidPluginException, UnknownDependencyException {
         Validate.notNull(file, "File cannot be null");
@@ -350,14 +327,14 @@ public final class SimplePluginManager implements PluginManager {
 
     /**
      * Checks if the given plugin is loaded and returns it when applicable
-     * <p>
+     * <p />
      * Please note that the name of the plugin is case-sensitive
      *
      * @param name Name of the plugin to check
      * @return Plugin if it exists, otherwise null
      */
     public synchronized Plugin getPlugin(String name) {
-        return lookupNames.get(name.replace(' ', '_'));
+        return lookupNames.get(name);
     }
 
     public synchronized Plugin[] getPlugins() {
@@ -366,7 +343,7 @@ public final class SimplePluginManager implements PluginManager {
 
     /**
      * Checks if the given plugin is enabled or not
-     * <p>
+     * <p />
      * Please note that the name of the plugin is case-sensitive.
      *
      * @param name Name of the plugin to check
@@ -466,8 +443,7 @@ public final class SimplePluginManager implements PluginManager {
     }
 
     /**
-     * Calls an event with the given details.
-     * <p>
+     * Calls an event with the given details.<br>
      * This method only synchronizes when the event is not asynchronous.
      *
      * @param event Event details
@@ -534,16 +510,14 @@ public final class SimplePluginManager implements PluginManager {
     }
 
     /**
-     * Registers the given event to the specified listener using a directly
-     * passed EventExecutor
+     * Registers the given event to the specified listener using a directly passed EventExecutor
      *
      * @param event Event class to register
      * @param listener PlayerListener to register
      * @param priority Priority of this event
      * @param executor EventExecutor to register
      * @param plugin Plugin to register
-     * @param ignoreCancelled Do not call executor if event was already
-     *     cancelled
+     * @param ignoreCancelled Do not call executor if event was already cancelled
      */
     public void registerEvent(Class<? extends Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, boolean ignoreCancelled) {
         Validate.notNull(listener, "Listener cannot be null");
@@ -607,11 +581,11 @@ public final class SimplePluginManager implements PluginManager {
     }
 
     public void removePermission(Permission perm) {
-        removePermission(perm.getName());
+        removePermission(perm.getName().toLowerCase());
     }
 
     public void removePermission(String name) {
-        permissions.remove(name.toLowerCase());
+        permissions.remove(name);
     }
 
     public void recalculatePermissionDefaults(Permission perm) {

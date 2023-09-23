@@ -1,45 +1,30 @@
 package org.bukkit.entity;
 
-import org.bukkit.projectiles.ProjectileSource;
+import org.bukkit.block.Dispenser;
 
 /**
- * Represents a shootable entity.
+ * Represents a shootable entity
  */
 public interface Projectile extends Entity {
 
     /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public LivingEntity _INVALID_getShooter();
-
-    /**
-     * Retrieve the shooter of this projectile.
+     * Retrieve the shooter of this projectile. The returned value can be null
+     * for projectiles shot from a {@link Dispenser} for example.
      *
-     * @return the {@link ProjectileSource} that shot this projectile
+     * @return the {@link LivingEntity} that shot this projectile
      */
-    public ProjectileSource getShooter();
+    public LivingEntity getShooter();
 
     /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public void _INVALID_setShooter(LivingEntity shooter);
-
-    /**
-     * Set the shooter of this projectile.
+     * Set the shooter of this projectile
      *
-     * @param source the {@link ProjectileSource} that shot this projectile
+     * @param shooter the {@link LivingEntity} that shot this projectile
      */
-    public void setShooter(ProjectileSource source);
+    public void setShooter(LivingEntity shooter);
 
     /**
      * Determine if this projectile should bounce or not when it hits.
-     * <p>
+     * <p />
      * If a small fireball does not bounce it will set the target on fire.
      *
      * @return true if it should bounce.
@@ -47,8 +32,7 @@ public interface Projectile extends Entity {
     public boolean doesBounce();
 
     /**
-     * Set whether or not this projectile should bounce or not when it hits
-     * something.
+     * Set whether or not this projectile should bounce or not when it hits something.
      *
      * @param doesBounce whether or not it should bounce.
      */

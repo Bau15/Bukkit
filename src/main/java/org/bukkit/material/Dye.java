@@ -11,11 +11,6 @@ public class Dye extends MaterialData implements Colorable {
         super(Material.INK_SACK);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Dye(final int type) {
         super(type);
     }
@@ -24,20 +19,10 @@ public class Dye extends MaterialData implements Colorable {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Dye(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Dye(final Material type, final byte data) {
         super(type, data);
     }

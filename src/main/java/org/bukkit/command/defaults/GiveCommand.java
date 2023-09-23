@@ -1,7 +1,6 @@
 package org.bukkit.command.defaults;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.StringUtil;
 
-import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 
 public class GiveCommand extends VanillaCommand {
@@ -49,10 +47,6 @@ public class GiveCommand extends VanillaCommand {
         if (player != null) {
             Material material = Material.matchMaterial(args[1]);
 
-            if (material == null) {
-                material = Bukkit.getUnsafe().getMaterialFromInternalName(args[1]);
-            }
-
             if (material != null) {
                 int amount = 1;
                 short data = 0;
@@ -67,18 +61,7 @@ public class GiveCommand extends VanillaCommand {
                     }
                 }
 
-                ItemStack stack = new ItemStack(material, amount, data);
-
-                if (args.length >= 5) {
-                    try {
-                        stack = Bukkit.getUnsafe().modifyItemStack(stack, Joiner.on(' ').join(Arrays.asList(args).subList(4, args.length)));
-                    } catch (Throwable t) {
-                        player.sendMessage("Not a valid tag");
-                        return true;
-                    }
-                }
-
-                player.getInventory().addItem(stack);
+                player.getInventory().addItem(new ItemStack(material, amount, data));
 
                 Command.broadcastCommandMessage(sender, "Gave " + player.getName() + " some " + material.getId() + " (" + material + ")");
             } else {
@@ -103,7 +86,7 @@ public class GiveCommand extends VanillaCommand {
         if (args.length == 2) {
             final String arg = args[1];
             final List<String> materials = GiveCommand.materials;
-            List<String> completion = new ArrayList<String>();
+            List<String> completion = null;
 
             final int size = materials.size();
             int i = Collections.binarySearch(materials, arg, String.CASE_INSENSITIVE_ORDER);
@@ -116,13 +99,18 @@ public class GiveCommand extends VanillaCommand {
             for ( ; i < size; i++) {
                 String material = materials.get(i);
                 if (StringUtil.startsWithIgnoreCase(material, arg)) {
+                    if (completion == null) {
+                        completion = new ArrayList<String>();
+                    }
                     completion.add(material);
                 } else {
                     break;
                 }
             }
 
-            return Bukkit.getUnsafe().tabCompleteInternalMaterialName(arg, completion);
+            if (completion != null) {
+                return completion;
+            }
         }
         return ImmutableList.of();
     }

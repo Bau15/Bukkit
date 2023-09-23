@@ -7,16 +7,16 @@ import org.bukkit.event.HandlerList;
 
 /**
  * Called when a block grows naturally in the world.
- * <p>
+ * <p />
  * Examples:
  * <ul>
- * <li>Wheat
- * <li>Sugar Cane
- * <li>Cactus
- * <li>Watermelon
- * <li>Pumpkin
+ * <li>Wheat</li>
+ * <li>Sugar Cane</li>
+ * <li>Cactus</li>
+ * <li>Watermelon</li>
+ * <li>Pumpkin</li>
  * </ul>
- * <p>
+ * <p />
  * If a Block Grow event is cancelled, the block will not grow.
  */
 public class BlockGrowEvent extends BlockEvent implements Cancellable {

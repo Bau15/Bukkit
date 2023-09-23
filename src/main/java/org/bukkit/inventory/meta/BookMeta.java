@@ -5,8 +5,7 @@ import java.util.List;
 import org.bukkit.Material;
 
 /**
- * Represents a book ({@link Material#BOOK_AND_QUILL} or {@link
- * Material#WRITTEN_BOOK}) that can have a title, an author, and pages.
+ * Represents a book ({@link Material#BOOK_AND_QUILL} or {@link Material#WRITTEN_BOOK}) that can have a title, an author, and pages.
  */
 public interface BookMeta extends ItemMeta {
 
@@ -19,18 +18,14 @@ public interface BookMeta extends ItemMeta {
 
     /**
      * Gets the title of the book.
-     * <p>
-     * Plugins should check that hasTitle() returns true before calling this
-     * method.
+     * Plugins should check that hasTitle() returns true before calling this method.
      *
      * @return the title of the book
      */
     String getTitle();
 
     /**
-     * Sets the title of the book.
-     * <p>
-     * Limited to 16 characters. Removes title when given null.
+     * Sets the title of the book. Limited to 16 characters. Removes title when given null.
      *
      * @param title the title to set
      * @return true if the title was successfully set
@@ -46,9 +41,7 @@ public interface BookMeta extends ItemMeta {
 
     /**
      * Gets the author of the book.
-     * <p>
-     * Plugins should check that hasAuthor() returns true before calling this
-     * method.
+     * Plugins should check that hasAuthor() returns true before calling this method.
      *
      * @return the author of the book
      */
@@ -77,11 +70,8 @@ public interface BookMeta extends ItemMeta {
     String getPage(int page);
 
     /**
-     * Sets the specified page in the book. Pages of the book must be
-     * contiguous.
-     * <p>
-     * The data can be up to 256 characters in length, additional characters
-     * are truncated.
+     * Sets the specified page in the book. Pages of the book must be contiguous.
+     * The data can be up to 256 characters in length, additional characters are trucated.
      *
      * @param page the page number to set
      * @param data the data to set for that page
@@ -96,24 +86,21 @@ public interface BookMeta extends ItemMeta {
     List<String> getPages();
 
     /**
-     * Clears the existing book pages, and sets the book to use the provided
-     * pages. Maximum 50 pages with 256 characters per page.
+     * Clears the existing book pages, and sets the book to use the provided pages. Maximum 50 pages with 256 characters per page.
      *
      * @param pages A list of pages to set the book to use
      */
     void setPages(List<String> pages);
 
     /**
-     * Clears the existing book pages, and sets the book to use the provided
-     * pages. Maximum 50 pages with 256 characters per page.
+     * Clears the existing book pages, and sets the book to use the provided pages. Maximum 50 pages with 256 characters per page.
      *
      * @param pages A list of strings, each being a page
      */
     void setPages(String... pages);
 
     /**
-     * Adds new pages to the end of the book. Up to a maximum of 50 pages with
-     * 256 characters per page.
+     * Adds new pages to the end of the book. Up to a maximum of 50 pages with 256 characters per page.
      *
      * @param pages A list of strings, each being a page
      */

@@ -7,11 +7,6 @@ public class Cake extends MaterialData {
         super(Material.CAKE_BLOCK);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Cake(int type) {
         super(type);
     }
@@ -20,20 +15,10 @@ public class Cake extends MaterialData {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Cake(int type, byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Cake(Material type, byte data) {
         super(type, data);
     }

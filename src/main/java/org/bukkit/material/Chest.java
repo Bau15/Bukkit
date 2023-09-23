@@ -22,11 +22,6 @@ public class Chest extends DirectionalContainer {
         setFacingDirection(direction);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Chest(final int type) {
         super(type);
     }
@@ -35,20 +30,10 @@ public class Chest extends DirectionalContainer {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Chest(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Chest(final Material type, final byte data) {
         super(type, data);
     }

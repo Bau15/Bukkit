@@ -7,25 +7,14 @@ import org.bukkit.entity.EntityType;
  * Represents a spawn egg that can be used to spawn mobs
  */
 public class SpawnEgg extends MaterialData {
-
     public SpawnEgg() {
         super(Material.MONSTER_EGG);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public SpawnEgg(int type, byte data){
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public SpawnEgg(byte data) {
         super(Material.MONSTER_EGG, data);
     }
@@ -37,7 +26,6 @@ public class SpawnEgg extends MaterialData {
 
     /**
      * Get the type of entity this egg will spawn.
-     *
      * @return The entity type.
      */
     public EntityType getSpawnedType() {
@@ -46,7 +34,6 @@ public class SpawnEgg extends MaterialData {
 
     /**
      * Set the type of entity this egg will spawn.
-     *
      * @param type The entity type.
      */
     public void setSpawnedType(EntityType type) {

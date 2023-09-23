@@ -64,8 +64,7 @@ public class SimplexOctaveGenerator extends OctaveGenerator {
     }
 
     /**
-     * Generates noise for the 3D coordinates using the specified number of
-     * octaves and parameters
+     * Generates noise for the 3D coordinates using the specified number of octaves and parameters
      *
      * @param x X-coordinate
      * @param y Y-coordinate
@@ -80,8 +79,7 @@ public class SimplexOctaveGenerator extends OctaveGenerator {
     }
 
     /**
-     * Generates noise for the 3D coordinates using the specified number of
-     * octaves and parameters
+     * Generates noise for the 3D coordinates using the specified number of octaves and parameters
      *
      * @param x X-coordinate
      * @param y Y-coordinate

@@ -11,11 +11,6 @@ public class Lever extends SimpleAttachableMaterialData implements Redstone {
         super(Material.LEVER);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Lever(final int type) {
         super(type);
     }
@@ -24,20 +19,10 @@ public class Lever extends SimpleAttachableMaterialData implements Redstone {
         super(type);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Lever(final int type, final byte data) {
         super(type, data);
     }
 
-    /**
-     *
-     * @deprecated Magic value
-     */
-    @Deprecated
     public Lever(final Material type, final byte data) {
         super(type, data);
     }

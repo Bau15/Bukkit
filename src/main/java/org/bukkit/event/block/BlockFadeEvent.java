@@ -7,16 +7,14 @@ import org.bukkit.event.HandlerList;
 
 /**
  * Called when a block fades, melts or disappears based on world conditions
- * <p>
+ * <p />
  * Examples:
  * <ul>
- * <li>Snow melting due to being near a light source.
- * <li>Ice melting due to being near a light source.
- * <li>Fire burning out after time, without destroying fuel block.
+ * <li>Snow melting due to being near a light source.</li>
+ * <li>Ice melting due to being near a light source.</li>
  * </ul>
- * <p>
- * If a Block Fade event is cancelled, the block will not fade, melt or
- * disappear.
+ * <p />
+ * If a Block Fade event is cancelled, the block will not fade, melt or disappear.
  */
 public class BlockFadeEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
@@ -30,11 +28,9 @@ public class BlockFadeEvent extends BlockEvent implements Cancellable {
     }
 
     /**
-     * Gets the state of the block that will be fading, melting or
-     * disappearing.
+     * Gets the state of the block that will be fading, melting or disappearing.
      *
-     * @return The block state of the block that will be fading, melting or
-     *     disappearing
+     * @return The block state of the block that will be fading, melting or disappearing
      */
     public BlockState getNewState() {
         return newState;

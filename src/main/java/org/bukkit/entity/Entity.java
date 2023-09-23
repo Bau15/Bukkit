@@ -25,10 +25,8 @@ public interface Entity extends Metadatable {
     public Location getLocation();
 
     /**
-     * Stores the entity's current position in the provided Location object.
-     * <p>
-     * If the provided Location is null this method does nothing and returns
-     * null.
+     * Stores the entity's current position in the provided Location object.<br />
+     * If the provided Location is null this method does nothing and returns null.
      *
      * @return The Location object provided or null
      */
@@ -49,15 +47,6 @@ public interface Entity extends Metadatable {
     public Vector getVelocity();
 
     /**
-     * Returns true if the entity is supported by a block. This value is a
-     * state updated by the server and is not recalculated unless the entity
-     * moves.
-     *
-     * @return True if entity is on ground.
-     */
-    public boolean isOnGround();
-
-    /**
      * Gets the current world this entity resides in
      *
      * @return World
@@ -65,8 +54,7 @@ public interface Entity extends Metadatable {
     public World getWorld();
 
     /**
-     * Teleports this entity to the given location. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
+     * Teleports this entity to the given location
      *
      * @param location New location to teleport this entity to
      * @return <code>true</code> if the teleport was successful
@@ -74,8 +62,7 @@ public interface Entity extends Metadatable {
     public boolean teleport(Location location);
 
     /**
-     * Teleports this entity to the given location. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
+     * Teleports this entity to the given location
      *
      * @param location New location to teleport this entity to
      * @param cause The cause of this teleportation
@@ -84,8 +71,7 @@ public interface Entity extends Metadatable {
     public boolean teleport(Location location, TeleportCause cause);
 
     /**
-     * Teleports this entity to the target Entity. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
+     * Teleports this entity to the target Entity
      *
      * @param destination Entity to teleport this entity to
      * @return <code>true</code> if the teleport was successful
@@ -93,8 +79,7 @@ public interface Entity extends Metadatable {
     public boolean teleport(Entity destination);
 
     /**
-     * Teleports this entity to the target Entity. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
+     * Teleports this entity to the target Entity
      *
      * @param destination Entity to teleport this entity to
      * @param cause The cause of this teleportation
@@ -103,8 +88,7 @@ public interface Entity extends Metadatable {
     public boolean teleport(Entity destination, TeleportCause cause);
 
     /**
-     * Returns a list of entities within a bounding box centered around this
-     * entity
+     * Returns a list of entities within a bounding box centered around this entity
      *
      * @param x 1/2 the size of the box along x axis
      * @param y 1/2 the size of the box along y axis
@@ -121,8 +105,7 @@ public interface Entity extends Metadatable {
     public int getEntityId();
 
     /**
-     * Returns the entity's current fire ticks (ticks before the entity stops
-     * being on fire).
+     * Returns the entity's current fire ticks (ticks before the entity stops being on fire).
      *
      * @return int fireTicks
      */
@@ -136,8 +119,7 @@ public interface Entity extends Metadatable {
     public int getMaxFireTicks();
 
     /**
-     * Sets the entity's current fire ticks (ticks before the entity stops
-     * being on fire).
+     * Sets the entity's current fire ticks (ticks before the entity stops being on fire).
      *
      * @param ticks Current ticks remaining
      */
@@ -158,7 +140,6 @@ public interface Entity extends Metadatable {
     /**
      * Returns false if the entity has died or been despawned for some other
      * reason.
-     *
      * @return True if valid.
      */
     public boolean isValid();
@@ -222,11 +203,9 @@ public interface Entity extends Metadatable {
     public void setLastDamageCause(EntityDamageEvent event);
 
     /**
-     * Retrieve the last {@link EntityDamageEvent} inflicted on this entity.
-     * This event may have been cancelled.
+     * Retrieve the last {@link EntityDamageEvent} inflicted on this entity. This event may have been cancelled.
      *
-     * @return the last known {@link EntityDamageEvent} or null if hitherto
-     *     unharmed
+     * @return the last known {@link EntityDamageEvent} or null if hitherto unharmed
      */
     public EntityDamageEvent getLastDamageCause();
 
@@ -239,7 +218,7 @@ public interface Entity extends Metadatable {
 
     /**
      * Gets the amount of ticks this entity has lived for.
-     * <p>
+     * <p />
      * This is the equivalent to "age" in entities.
      *
      * @return Age of entity
@@ -248,9 +227,8 @@ public interface Entity extends Metadatable {
 
     /**
      * Sets the amount of ticks this entity has lived for.
-     * <p>
-     * This is the equivalent to "age" in entities. May not be less than one
-     * tick.
+     * <p />
+     * This is the equivalent to "age" in entities. May not be less than one tick.
      *
      * @param value Age of entity
      */
@@ -258,7 +236,7 @@ public interface Entity extends Metadatable {
 
     /**
      * Performs the specified {@link EntityEffect} for this entity.
-     * <p>
+     * <p />
      * This will be viewable to all players near the entity.
      *
      * @param type Effect to play.
@@ -267,7 +245,6 @@ public interface Entity extends Metadatable {
 
     /**
      * Get the type of the entity.
-     *
      * @return The entity type.
      */
     public EntityType getType();
@@ -280,9 +257,9 @@ public interface Entity extends Metadatable {
     public boolean isInsideVehicle();
 
     /**
-     * Leave the current vehicle. If the entity is currently in a vehicle (and
-     * is removed from it), true will be returned, otherwise false will be
-     * returned.
+     * Leave the current vehicle. If the entity is currently in a vehicle
+     * (and is removed from it), true will be returned, otherwise false will
+     * be returned.
      *
      * @return True if the entity was in a vehicle.
      */
